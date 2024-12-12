@@ -30,6 +30,14 @@ std::string fileChecker(std::ifstream &file)
         {
             return headerLine;
         }
+        else
+        {
+            std::cerr << "[!] Error: Failed to read from input file " << file << std::endl;
+        }
+    }
+    else 
+    {
+        std::cerr << "[!] Error: Failed to open file " << file << std::endl;
     }
     return ""; // Return Empty String if Data Not Found
 }
@@ -43,26 +51,30 @@ std::string fileChecker(std::ifstream &file)
  */
 void fieldTitlesFunction(std::ifstream &file, std::vector<std::string> &vector)
 {
-    std::string headerLine;
-    file.seekg(0);
-
     if (!file.is_open())
     {
         std::cerr << "[!] Error: File is not Open." << std::endl
                   << "[!] Please Check Data File Location or Definitions in FileHandling.h";
+        return;
     }
-    else
-    {
-        if (getline(file, headerLine))
-        {
-            std::istringstream headerStream(headerLine);
-            std::string fieldTitle;
 
-            while (getline(headerStream, fieldTitle, ','))
-            {
+    file.clear(); // Clear Error Flags
+    file.seekg(0); // Seek to the beginning of the file
+
+    std::string headerLine;
+    if (getline(file, headerLine))
+    {
+        std::istringstream headerStream(headerLine);
+        std::string fieldTitle;
+
+        while (getline(headerStream, fieldTitle, ','))
+        {
                 vector.push_back(fieldTitle);
-            }
         }
+    }
+    else 
+    {
+        std::cerr << "[!] Error: Failed to read header line." << std::endl;
     }
 }
 #endif
