@@ -32,12 +32,12 @@ std::string fileChecker(std::ifstream &file)
         }
         else
         {
-            std::cerr << "[!] Error: Failed to read from input file " << file << std::endl;
+            std::cerr << "[!] Error: Failed to read from input file " << std::endl;
         }
     }
     else 
     {
-        std::cerr << "[!] Error: Failed to open file " << file << std::endl;
+        std::cerr << "[!] Error: Failed to open file " << std::endl;
     }
     return ""; // Return Empty String if Data Not Found
 }
