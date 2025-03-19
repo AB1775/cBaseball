@@ -73,9 +73,9 @@ Similar to the "Search Team" menu, the "Compare Team Statistics" option presents
 
 <img src="Images/image5.png">
 
-#### Updating Statistics Files
-**[IMPORTANT]** This program uses the **Team Standard Batting**, **Team Standard Pitching**, and **Team Fielding** files.
+#### Updating Statistics Files Manually
 
+**[IMPORTANT]** This program uses the **Team Standard Batting**, **Team Standard Pitching**, and **Team Fielding** files.
 1. Open [https://www.baseball-reference.com/leagues/majors/2024.shtml](https://www.baseball-reference.com/leagues/majors/2024.shtml)
 2. Locate the "Team Standard Batting" header
 3. Hover over the "Share & Export" drop-down menu below the title header
@@ -84,13 +84,31 @@ Similar to the "Search Team" menu, the "Compare Team Statistics" option presents
 
 **Follow this process to update "Team Standard Pitching" and "Team Fielding"**
 
+#### Updating Statistics using the Python Script
+##### Requires the Following Dependencies
+- BeautifulSoup4
+- Pandas
+
+1. Navigate to the "Baseball_Stats" directory in a terminal.
+```cmd
+cd Baseball_Stats
+```
+2. Run the script
+```cmd
+python StatsScraper.py
+```
+You will be prompted to enter an option, and the script will fetch the latest stats, appending them to the appropriate .csv file.
+
+#### ** THIS SCRIPT SHOULD BE USED SPARINGLY TO AVOID EXCESSIVE REQUESTS **
+
 #### Changing File Names and File Paths
 If you want to store the CSV files in a different directory or change the names of the CSV files, you need to update the file paths in the source code before compiling:
 
 1. Open FileHandling.h.
 2. Locate the variables that define the file paths for the statistics files under "File Variables."
 3. Update these paths to point to the new directory where your CSV files are stored and/or update the file names.
-4. Recompile the program to apply the changes.
+4. **If Using StatsScraper.py** Update the file name arguments within the main function.
+5. Recompile the program to apply the changes.
 
 ## Acknowledgements
 - Data files provided by [baseball-reference.com](https://www.baseball-reference.com), provider of complete current and historical baseball stats
