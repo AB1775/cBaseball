@@ -30,7 +30,7 @@ def scrape_pitching_stats(url, output_csv):
         return
     
     soup = BeautifulSoup(response.text, 'html.parser');
-    table = soup.find('div', {'id': 'div_teams_standard_pitching'})
+    table = soup.find('div', {'id': 'all_teams_standard_pitching'})
     headers = [th.text for th in table.find('thead').find_all('th')]
 
     rows = []
@@ -51,7 +51,7 @@ def scrape_fielding_stats(url, output_csv):
         return
     
     soup = BeautifulSoup(response.text, 'html.parser');
-    table = soup.find('div', {'id': 'div_teams_standard_fielding'})
+    table = soup.find('div', {'id': 'all_teams_standard_fielding'})
     headers = [th.text for th in table.find('thead').find_all('th')]
 
     rows = []
