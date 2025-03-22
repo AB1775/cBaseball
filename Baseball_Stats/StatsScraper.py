@@ -71,22 +71,23 @@ if __name__ == '__main__':
         print("Options: updateBatting, updatePitching, updateFielding, exit")
         menuoption: str = input("cBaseball-Updater $> ")
 
-        if menuoption == "updateBatting":
-            scrape_batting_stats(
-                "https://www.baseball-reference.com/leagues/majors/2024-standard-batting.shtml",
-                "Baseball_Stats/team_standard_batting24.csv"
-            )
-        elif menuoption == "updatePitching":
-            scrape_pitching_stats(
-                "https://www.baseball-reference.com/leagues/majors/2024-standard-pitching.shtml",
-                "Baseball_Stats/team_standard_pitching24.csv"
-            )
-        elif menuoption == "updateFielding":
-            scrape_fielding_stats(
-                "https://www.baseball-reference.com/leagues/majors/2024-standard-fielding.shtml",
-                "Baseball_Stats/team_standard_fielding24.csv"
-            )
-        elif menuoption == "exit":
-            break
-        else:
-            print(menuoption, " not recognized")
+        match (menuoption):
+            case "updateBatting":
+                scrape_batting_stats(
+                    "https://www.baseball-reference.com/leagues/majors/2024-standard-batting.shtml",
+                    "Baseball_Stats/team_standard_batting24.csv"
+                )            
+            case "updatePitching":
+                scrape_pitching_stats(
+                    "https://www.baseball-reference.com/leagues/majors/2024-standard-pitching.shtml",
+                    "Baseball_Stats/team_standard_pitching24.csv"
+                )
+            case "updateFielding":
+                scrape_fielding_stats(
+                    "https://www.baseball-reference.com/leagues/majors/2024-standard-fielding.shtml",
+                    "Baseball_Stats/team_standard_fielding24.csv"
+                )           
+            case "exit":
+                break
+            case _:
+                print(menuoption, " not recognized")
